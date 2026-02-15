@@ -21,7 +21,7 @@ await connectDB()
 await connectCloudinary()
 
 //allowed multiple origins for CORS
-const allowedOrigins = ['http://localhost:5173','https://greencart-client-mu.vercel.app/'];
+const allowedOrigins = ['http://localhost:5173','https://greencart-client-mu.vercel.app'];
 
 app.post('/stripe',express.raw({type:'application/json'}),stripeWebhooks)
 
