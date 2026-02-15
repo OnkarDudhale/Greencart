@@ -25,9 +25,9 @@ const AllProducts = () => {
                 <p className='text-2xl font-medium uppercase'>All Products</p>
                 <div className='w-16 h-0.5 bg-primary rounded-full'></div>
             </div>
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md-gap-6 gap-3 mt-6'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md-gap-8 gap-5 mt-6'>
                 {filteredProducts
-                    .filter((product) => product.inStock) // Filter in-stock products
+                    .filter((product) => product.inStock) 
                     .map((product, index) => (
                         <ProductCard key={index} product={product} />
                     ))}
