@@ -7,6 +7,7 @@ import stripe from 'stripe';
 export const placeOrderCOD = async (req, res) => {
     try {
         const { userId, items, address } = req.body;
+
         if (!userId || !items || !address) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
