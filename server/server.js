@@ -15,20 +15,23 @@ import { stripeWebhooks } from './controllers/orderController.js';
 
 
 const app = express();
+
+//allowed multiple origins for CORS
+const allowedOrigins = ['http://localhost:5173','https://greencart-client-vert.vercel.app'];
+app.use(cors({origin:allowedOrigins, credentials:true}));
+
 const port = process.env.PORT || 3000;
 
 await connectDB()
 await connectCloudinary()
 
-//allowed multiple origins for CORS
-const allowedOrigins = ['http://localhost:5173','https://greencart-client-vert.vercel.app'];
 
 app.post('/stripe',express.raw({type:'application/json'}),stripeWebhooks)
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin:allowedOrigins, credentials:true}));
+
 
 app.get('/',(req,res)=>{
     res.send('api is working');
