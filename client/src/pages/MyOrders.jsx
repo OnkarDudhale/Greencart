@@ -4,21 +4,22 @@ import { useAppContext } from '../context/appContext'
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([])
-    const { currency,axios,user } = useAppContext()
+    const { currency, axios, user } = useAppContext()
 
     const fetchMyOrders = async () => {
-        try{
-            const {data}=await axios.get('/api/order/user')
-            if(data.success){
+        try {
+            const { data } = await axios.get('/api/order/user')
+            if (data.success) {
                 setMyOrders(data.orders)
             }
-        }catch(error){
+        } catch (error) {
             console.log(error);
+            toast.error("Something went wrong")
         }
     }
 
     useEffect(() => {
-        if(user){
+        if (user) {
             fetchMyOrders()
         }
     }, [user])
